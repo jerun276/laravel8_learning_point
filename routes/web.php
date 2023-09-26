@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
+use League\CommonMark\Extension\CommonMark\Node\Block\IndentedCode;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/student', function () {
+    return view('student');
+});
+
+Route::get('/teacher',[TeacherController::class,'index'])->name('teacher.index');
