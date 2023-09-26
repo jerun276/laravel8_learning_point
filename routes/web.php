@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\StudentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home/{name?}',  [HomeController::class,'index'])->name('home.index');
+
+// Route::resource('/teacher',  TeacherController::class);
+// Route::resource('/student',  StudentController::class);
+
+Route::resource([
+    'teacher'=>TeacherController::class,
+    'student'=>StudentController::class
+]);
